@@ -27,6 +27,41 @@ front-back-template/
   orval.config.ts   # APIクライアント生成設定
 ```
 
+## 開発環境（Dev Container）
+
+このプロジェクトは Dev Container に対応しています。
+
+### 必要なもの
+
+- Docker
+- Visual Studio Code
+- [Dev Containers 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+### 起動方法
+
+1. VS Code でこのプロジェクトを開く
+2. コマンドパレット（Ctrl+Shift+P）から `Dev Containers: Open Folder in Container` を実行
+3. 自動的に環境が構築され、必要な拡張機能がインストールされます
+
+### 自動インストール
+
+Dev Container では以下が自動でセットアップされます：
+
+- **Bun** - パッケージマネージャー
+- **Node.js 22** - ランタイム
+- **拡張機能**:
+  - Biome - Linter/Formatter
+  - GitHub Copilot Chat
+  - Tailwind CSS IntelliSense
+  - Todo Tree
+
+### ポートフォワーディング
+
+以下のポートは自動的にフォワードされます：
+
+- `3000` - 予約済み
+- `8787` - バックエンド開発サーバー
+
 ## セットアップ
 
 ```bash
