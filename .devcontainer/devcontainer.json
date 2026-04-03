@@ -1,0 +1,21 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/shyim/devcontainers-features/bun:0": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    }
+  },
+  "postCreateCommand": "npm install -g @openai/codex",
+  "forwardPorts": [3000, 8787],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "biomejs.biome",
+        "GitHub.copilot-chat",
+        "bradlc.vscode-tailwindcss",
+        "Gruntfuggly.todo-tree"
+      ]
+    }
+  }
+}
