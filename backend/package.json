@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.6.1",
-    "@hono/zod-openapi": "^1.2.4",
-    "@scalar/hono-api-reference": "^0.10.5",
-    "hono": "^4.12.10"
+    "@hono/zod-openapi": "^1.4.0",
+    "@scalar/hono-api-reference": "^0.10.20",
+    "hono": "^4.12.27"
   },
   "devDependencies": {
-    "wrangler": "^4.4.0"
+    "wrangler": "^4.105.0"
   }
 }
