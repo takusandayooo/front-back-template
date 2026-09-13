@@ -1,4 +1,5 @@
-import { useGetUsersId } from "common/generate/default/default";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,9 +11,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { api } from "@/lib/api";
 
 function UserCard({ userId }: { userId: string }) {
-  const { data, isPending, isError } = useGetUsersId(userId);
+  const { data, isPending, isError } = useQuery({
+    queryKey: ["users", userId],
+    queryFn: async () => {
+      const response = await api.users[":id"].$get({
+        param: { id: userId },
+      });
+
+      if (!response.ok) {
+        throw new Error("ユーザーの取得に失敗しました。");
+      }
+
+      return response.json();
+    },
+  });
 
   if (isPending) {
     return (
@@ -63,13 +78,16 @@ function UserCard({ userId }: { userId: string }) {
   );
 }
 
-export default function App() {
+export function HomePage() {
   const [inputValue, setInputValue] = useState("");
-  const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     if (inputValue.trim()) {
-      setUserId(inputValue.trim());
+      void navigate({
+        to: "/users/$userId",
+        params: { userId: inputValue.trim() },
+      });
     }
   };
 
@@ -91,8 +109,28 @@ export default function App() {
           検索
         </Button>
       </div>
+    </div>
+  );
+}
 
-      {userId && <UserCard userId={userId} />}
+export function UserPage() {
+  const { userId } = useParams({ from: "/users/$userId" });
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-8 p-8">
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">Car Booking API</h1>
+        <p className="text-muted-foreground">Hono RPC で取得したユーザー情報</p>
+      </div>
+
+      <UserCard userId={userId} />
+
+      <Link
+        to="/"
+        className="text-muted-foreground text-sm underline underline-offset-4 hover:text-foreground"
+      >
+        別のユーザーを検索
+      </Link>
     </div>
   );
 }

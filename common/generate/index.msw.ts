@@ -1,1 +1,1 @@
-export { getDefaultMock } from './default/default.msw'
+export { getDefaultMock } from './default/default.msw.ts'

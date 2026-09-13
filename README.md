@@ -90,6 +90,32 @@ bun run generate:api
 
 `frontend/src/api/` にTanstack Query対応のAPIクライアントが生成される。
 
+## Hono RPC と MSW モック
+
+フロントエンドの実 API 呼び出しは Hono RPC（`hc<AppType>`）を使用する。`AppType` は
+バックエンドのルート定義から公開されるため、パス・リクエスト・レスポンスの型を直接共有できる。
+
+OpenAPI の生成、Scalar のドキュメント、Orval 生成の MSW ハンドラは維持している。モックを
+有効にすると Hono RPC の HTTP リクエストを MSW が横取りするため、バックエンドを起動せずに
+フロントエンドを開発できる。
+
+```bash
+# 実 API を使う（別ターミナルで backend を起動）
+cd frontend && bun run dev
+
+# Orval 生成 MSW を使う
+cd frontend && VITE_ENABLE_MSW=true bun run dev
+```
+
+`VITE_API_BASE_URL` を指定すると、デプロイ先など Vite proxy を利用できない環境の API URL を設定できる。
+
+## Cloudflare Vite Plugin と TanStack Router
+
+フロントエンドは Cloudflare Vite Plugin を使い、Vite の HMR と Workers Runtime を統合している。
+`wrangler.jsonc` の SPA fallback により、TanStack Router のクライアントサイドルーティングも開発・本番で同じように動作する。
+
+ルート定義は `frontend/src/router.tsx` にあり、`/` と `/users/$userId` をサンプルとして含む。UI は shadcn/ui を標準採用している。
+
 ## デプロイ
 
 ```bash

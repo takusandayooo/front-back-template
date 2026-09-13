@@ -8,9 +8,11 @@ export default defineConfig({
       client: "react-query",
       target: "./generate",
       mock: {
-        type: "msw",
         indexMockFiles: true,
-        useExamples: true,
+        generators: [
+          { type: "msw", useExamples: true },
+          { type: "faker", useExamples: true },
+        ],
       },
       biome: true,
       override: {

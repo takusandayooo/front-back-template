@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Car Booking API"
+    "title": "My API"
   },
   "components": {
     "schemas": {
@@ -22,7 +22,11 @@
             "example": 42
           }
         },
-        "required": ["id", "name", "age"]
+        "required": [
+          "id",
+          "name",
+          "age"
+        ]
       }
     },
     "parameters": {}

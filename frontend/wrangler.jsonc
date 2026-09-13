@@ -3,10 +3,6 @@
   "name": "frontend",
   "compatibility_date": "2026-04-03",
   "assets": {
-    "directory": "./dist/"
-  },
-  "dev": {
-    "ip": "127.0.0.1",
-    "port": 8787
+    "not_found_handling": "single-page-application"
   }
 }
