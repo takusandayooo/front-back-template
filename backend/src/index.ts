@@ -51,14 +51,21 @@ const route = createRoute({
   },
 });
 
-app.openapi(route, (c) => {
+const routes = app.openapi(route, (c) => {
   const { id } = c.req.valid("param");
-  return c.json({
-    id,
-    age: 20,
-    name: "Ultra-man",
-  });
+  return c.json(
+    {
+      id,
+      age: 20,
+      name: "Ultra-man",
+    },
+    200,
+  );
 });
+
+// フロントエンドの Hono RPC クライアントが参照する API 契約。
+// OpenAPI の生成元も同じルート定義なので、実装の二重管理は発生しない。
+export type AppType = typeof routes;
 
 app.doc("/openapi.json", {
   openapi: "3.0.0",

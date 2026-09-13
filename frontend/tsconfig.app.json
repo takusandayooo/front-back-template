@@ -4,6 +4,7 @@
     "target": "ES2023",
     "paths": {
       "@/*": ["./src/*"],
+      "backend/*": ["../backend/*"],
       "common/*": ["../common/*"]
     },
     "useDefineForClassFields": true,

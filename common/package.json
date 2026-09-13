@@ -8,19 +8,19 @@
     "generate:api": "bun run generate-openapi && orval"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "orval": "^7.21.0",
-    "tsx": "^4.22.4"
+    "@types/bun": "^1.4.2",
+    "orval": "^8.32.0",
+    "tsx": "^4.23.13"
   },
   "peerDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.5.0",
-    "@tanstack/react-query": "^5.101.1",
-    "@types/node": "^25.9.4",
-    "axios": "^1.18.1",
+    "@faker-js/faker": "^10.6.0",
+    "@tanstack/react-query": "^5.102.8",
+    "@types/node": "^26.5.1",
+    "axios": "^1.20.0",
     "dotenv": "^17.4.2",
-    "msw": "^2.14.6"
+    "msw": "^2.15.0"
   }
 }
