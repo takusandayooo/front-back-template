@@ -17,9 +17,11 @@
     "format:fix": "biome format . --write",
     "check": "biome check .",
     "check:fix": "biome check . --write",
-    "deploy": "bun run --cwd backend deploy && bun run --cwd frontend deploy"
+    "deploy": "bun run --cwd backend deploy && bun run --cwd frontend deploy",
+    "prepare": "lefthook install"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13"
+    "@biomejs/biome": "2.5.13",
+    "lefthook": "^2.1.12"
   }
 }

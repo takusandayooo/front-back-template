@@ -1,0 +1,14 @@
+pre-commit:
+  commands:
+    biome:
+      glob: "*.{js,jsx,ts,tsx,json,jsonc,css}"
+      run: bunx biome check {staged_files}
+
+pre-push:
+  commands:
+    backend-typecheck:
+      run: bunx tsc --project backend/tsconfig.json --noEmit
+    frontend-build:
+      run: bun --bun run --cwd frontend build
+    generated-api:
+      run: bun --bun run --cwd common generate:api && git diff --exit-code -- common/openapi.json common/generate
