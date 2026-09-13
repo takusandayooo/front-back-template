@@ -65,8 +65,15 @@ Dev Container では以下が自動でセットアップされます：
 ## セットアップ
 
 ```bash
+mise install
 bun install
 ```
+
+`mise.toml` で Node.js 24.21.0 と Bun 1.4.2 を固定している。`mise run dev`、`mise run build`、
+`mise run check`、`mise run generate-api` を使用すると、チームで同じ実行環境を利用できる。
+
+`bun install` 時に Lefthook が有効化される。commit 前は staged files に Biome を実行し、push 前は
+バックエンド型チェック、フロントエンドビルド、OpenAPI / Orval生成物の差分確認を実行する。
 
 ## 開発
 
